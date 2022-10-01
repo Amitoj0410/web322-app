@@ -1,3 +1,4 @@
+var blog_service = require("./blog-service");
 const path = require('path');
 
 var express = require("express");
@@ -18,6 +19,13 @@ app.get("/", function(req,res){
 
 app.get("/about", function(req,res){
     res.sendFile(path.join(__dirname,"/views/about.html"));
+});
+
+// setup another route to listen on /blog
+app.get("/blog", function(req,res){
+  //res.setHeader()
+  // res.send(JSON.stringify({key:"value"}));
+  res.send("hello");
 });
 
 app.listen(HTTP_PORT, onHttpStart);
