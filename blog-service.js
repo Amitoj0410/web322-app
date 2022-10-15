@@ -89,8 +89,22 @@ function getCategories()
         }
 
         resolve(categories);
-    });   
+    });
 }
+
+module.exports.addPost = function(postData){
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+        //console.log(posts.length);
+        if(categories.length == 0)
+        {
+            reject("no categories returned");
+            return;
+        }
+
+        resolve(categories);
+    });
+}
+
 
 
 

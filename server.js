@@ -70,11 +70,7 @@ app.get("/posts/add", function(req,res){
 
 //
 
-app.use('/posts/add', (req, res, next) => {
-  upload.single("featureImage");
-})
-
-app.post('/posts/add', function (req, res) {
+app.post('/posts/add', upload.single("featureImage"), (req, res) => {
   let streamUpload = (req) => {
     return new Promise((resolve, reject) => {
         let stream = cloudinary.uploader.upload_stream(
@@ -103,8 +99,9 @@ upload(req).then((uploaded)=>{
     // TODO: Process the req.body and add it as a new Blog Post before redirecting to /posts
 
 });
+})
 
-});
+
 
 
 app.listen(HTTP_PORT, onHttpStart);
