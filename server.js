@@ -53,9 +53,9 @@ app.get("/blog", function(req,res){
   res.sendFile(path.join(__dirname,"/data/posts.json"));
 });
 
-app.get("/posts?category=1", function(req,res){
+app.get("/posts?category=:value", function(req,res){
   // res.sendFile(path.join(__dirname,"/data/posts.json"));
-  getCategoriesByValue(value)(req.params.value);
+  getCategoriesByValue(req.params.value);
 });
 
 app.get("/categories", function(req,res){
