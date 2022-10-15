@@ -69,45 +69,45 @@ app.get("/posts/add", function(req,res){
 
 //
 
-app.post('/posts/add', upload.single("featureImage"), (req, res) => {
-  let streamUpload = (req) => {
-    return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload_stream(
-            (error, result) => {
-            if (result) {
-                resolve(result);
-            } else {
-                reject(error);
-            }
-            }
-        );
+// app.post('/posts/add', upload.single("featureImage"), (req, res) => {
+//   let streamUpload = (req) => {
+//     return new Promise((resolve, reject) => {
+//         let stream = cloudinary.uploader.upload_stream(
+//             (error, result) => {
+//             if (result) {
+//                 resolve(result);
+//             } else {
+//                 reject(error);
+//             }
+//             }
+//         );
 
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
-    });
-};
+//         streamifier.createReadStream(req.file.buffer).pipe(stream);
+//     });
+// };
 
 
 
-async function upload(req) {
-    let result = await streamUpload(req);
-    console.log(result);
-    return result;
-}
+// async function upload(req) {
+//     let result = await streamUpload(req);
+//     console.log(result);
+//     return result;
+// }
 
-upload(req).then((uploaded)=>{
-    req.body.featureImage = uploaded.url;
+// upload(req).then((uploaded)=>{
+//     req.body.featureImage = uploaded.url;
 
-    // TODO: Process the req.body and add it as a new Blog Post before redirecting to /posts
-    const form_Data = req.body;
-    const form_File = req.file;
+//     // TODO: Process the req.body and add it as a new Blog Post before redirecting to /posts
+//     const form_Data = req.body;
+//     const form_File = req.file;
 
-    const returnData = "Your submission was received:<br/><br/>" +
-      "Your form data was:<br/>" + JSON.stringify(form_Data) + "<br/><br/>" +
-      "Your File data was:<br/>" + JSON.stringify(form_File) +
-      "<br/><p>This is the image you sent:<br/><img src='/photos/" + formFile.filename + "'/>";
-    res.send(returnData);
-});
-})
+//     const returnData = "Your submission was received:<br/><br/>" +
+//       "Your form data was:<br/>" + JSON.stringify(form_Data) + "<br/><br/>" +
+//       "Your File data was:<br/>" + JSON.stringify(form_File) +
+//       "<br/><p>This is the image you sent:<br/><img src='/photos/" + formFile.filename + "'/>";
+//     res.send(returnData);
+// });
+// })
 
 
 app.use((req, res) => {
