@@ -11,7 +11,7 @@
 
 var qs= require('qs');
 
-import getCategoriesByValue from "./blog-service.js"
+import {getCategoriesByValue} from "./blog-service.js"
 
 var blog_service = require("./blog-service.js");
 const path = require('path');
