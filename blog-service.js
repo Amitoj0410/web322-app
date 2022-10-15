@@ -95,13 +95,22 @@ function getCategories()
 module.exports.addPost = function(postData){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
         //console.log(posts.length);
-        if(categories.length == 0)
+        if(typeof postData.published == 'undefined')
         {
-            reject("no categories returned");
+            postData.published = false;
+            reject("checkbox issue (i.e. 'Published' checkbox not selected)");
             return;
         }
+        else
+        {
+            postData.published = true;
+        }
 
-        resolve(categories);
+        postData.id = posts.length + 1;
+
+        posts.push(postData);
+
+        resolve(postData);
     });
 }
 

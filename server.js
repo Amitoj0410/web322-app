@@ -92,7 +92,14 @@ upload(req).then((uploaded)=>{
     req.body.featureImage = uploaded.url;
 
     // TODO: Process the req.body and add it as a new Blog Post before redirecting to /posts
+    const form_Data = req.body;
+    const form_File = req.file;
 
+    const returnData = "Your submission was received:<br/><br/>" +
+      "Your form data was:<br/>" + JSON.stringify(form_Data) + "<br/><br/>" +
+      "Your File data was:<br/>" + JSON.stringify(form_File) +
+      "<br/><p>This is the image you sent:<br/><img src='/photos/" + formFile.filename + "'/>";
+    res.send(returnData);
 });
 })
 
