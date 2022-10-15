@@ -92,6 +92,22 @@ function getCategories()
     });
 }
 
+module.exports.getCategoriesByValue = function(value)
+{
+    return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
+        //console.log(posts.length);
+        for(var m = 0; m < posts.length; m++)
+        {
+            if(posts[m].category == value)
+            {
+                JSON.stringify(posts[m]);
+                resolve("Success");
+            }
+
+        }
+    });
+}
+
 module.exports.addPost = function(postData){
     return new Promise(function(resolve, reject){ // place our code inside a "Promise" function
         //console.log(posts.length);

@@ -9,6 +9,8 @@
 *
 ********************************************************************************/ 
 
+var qs= require('qs');
+
 
 var blog_service = require("./blog-service.js");
 const path = require('path');
@@ -51,8 +53,9 @@ app.get("/blog", function(req,res){
   res.sendFile(path.join(__dirname,"/data/posts.json"));
 });
 
-app.get("/posts", function(req,res){
-  res.sendFile(path.join(__dirname,"/data/posts.json"));
+app.get("/posts?category=:value", function(req,res){
+  // res.sendFile(path.join(__dirname,"/data/posts.json"));
+  getCategoriesByValue(value)(req.qs.value);
 });
 
 app.get("/categories", function(req,res){
