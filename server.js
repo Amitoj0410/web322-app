@@ -51,4 +51,8 @@ app.use((req, res) => {
 });
 
 
+app.get("/posts/add", function(req,res){
+  res.sendFile(path.join(__dirname,"/views/addPost.html"));
+});
+
 app.listen(HTTP_PORT, onHttpStart);
