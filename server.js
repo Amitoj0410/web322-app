@@ -59,11 +59,6 @@ app.get("/categories", function(req,res){
   res.sendFile(path.join(__dirname,"/data/categories.json"));
 });
 
-app.use((req, res) => {
-  res.status(404).send("Error 404 ! Page Not Found");
-});
-
-
 app.get("/posts/add", function(req,res){
   res.sendFile(path.join(__dirname,"/views/addPost.html"));
 });
@@ -102,6 +97,8 @@ upload(req).then((uploaded)=>{
 })
 
 
-
+app.use((req, res) => {
+  res.status(404).send("Error 404 ! Page Not Found");
+});
 
 app.listen(HTTP_PORT, onHttpStart);
