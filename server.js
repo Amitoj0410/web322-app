@@ -54,7 +54,7 @@ app.get("/blog", function(req,res){
   res.sendFile(path.join(__dirname,"/data/posts.json"));
 });
 
-app.get("/posts?:category", function(req,res){
+app.get("/posts?category=:value", function(req,res){
   //  res.sendFile(path.join(__dirname,"/data/posts.json"));
   getCategoriesByValue(req.query.category);
 });
@@ -85,6 +85,8 @@ app.post('/posts/add', upload.single("featureImage"), (req, res) => {
         streamifier.createReadStream(req.file.buffer).pipe(stream);
     });
 };
+
+
 
 async function upload(req) {
     let result = await streamUpload(req);
