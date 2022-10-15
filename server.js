@@ -16,6 +16,19 @@ const path = require('path');
 var express = require("express");
 var app = express();
 
+const multer = require("multer");
+const cloudinary = require('cloudinary').v2;
+const streamifier = require('streamifier');
+
+cloudinary.config({
+  cloud_name: 'dwmi9l48l',
+  api_key: '264368972983791',
+  api_secret: 'UR1lQj75h9vDRHEKTNBmuYhGq44',
+  secure: true
+});
+
+const upload = multer();
+
 var HTTP_PORT = process.env.PORT || 8080;
 
 // call this function after the http server starts listening for requests
