@@ -63,6 +63,12 @@ app.get("/categories", function(req,res){
   res.sendFile(path.join(__dirname,"/data/categories.json"));
 });
 
+app.get("/posts", function(req,res){
+  // res.sendFile(path.join(__dirname,"/views/addPost.html"));
+    res.sendFile(path.join(__dirname,"/data/posts.json"));
+
+});
+
 app.get("/posts/add", function(req,res){
   res.sendFile(path.join(__dirname,"/views/addPost.html"));
 });
